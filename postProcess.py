@@ -37,13 +37,17 @@ allPostsOutput = open('allPosts.json', 'w')
 json.dump(allposts, allPostsOutput)
 print('Got ', len(allposts.keys()), ' profiles.')
 
+keywords = ['$', 'purchase', 'buy', 'sell','purchasing', 'buying', 'selling','purchased', 'bought', 'sold' 'ticket', 'tickets', 'rent']
 filtered = {}
 existed = 0
+potential = 0
 for prof in allposts.keys():
     found = False
     for post in allposts[prof]:
         if post['text'] or validDate(post['date']):
             found = True
+        if any([k in post['text'] for k in keywords]):
+            potential += 1 
     if found:
         filtered[prof] = allposts[prof]
     if len(allposts[prof]):
@@ -51,6 +55,7 @@ for prof in allposts.keys():
 
 print('Profiles with non-empty posts: ',existed)
 print('Filtered profiles: ', len(filtered.keys()))
+print('Found ', potential, ' posts with inference potential.')
 
 outputFiltered = open('filteredPosts.json', 'w')
 json.dump(filtered, outputFiltered)
