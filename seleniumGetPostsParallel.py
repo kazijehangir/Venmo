@@ -213,7 +213,7 @@ def scrapePosts(i):
         pass
 # scrapePosts(0)
 
-NUM_THREADS = 5
+NUM_THREADS = 2
 
 for i in range(NUM_THREADS):
     try:
