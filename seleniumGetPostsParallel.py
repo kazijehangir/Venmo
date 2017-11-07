@@ -20,7 +20,7 @@ printLock = threading.Lock()
 def getProxyList():
     proxies = []
     driver = webdriver.Firefox(
-        executable_path='/home/jehangir/Documents/geckodriver')
+        executable_path='/home/kazi/Documents/geckodriver')
     driver.get('https://free-proxy-list.net/')
     odd = driver.find_elements_by_class_name('odd')
     for row in odd:
@@ -56,7 +56,7 @@ def isValid(proxy):
     fp.set_preference('network.proxy.type', 1)
 
     driver = webdriver.Firefox(
-            executable_path='/home/jehangir/Documents/geckodriver',
+            executable_path='/home/kazi/Documents/geckodriver',
             firefox_profile=fp)
     try:
         driver.get("https://whatsmyip.org")
@@ -159,7 +159,7 @@ def scrapePosts(i):
         fp.set_preference('network.proxy.type', 1)
 
         driver = webdriver.Firefox(
-            executable_path='/home/jehangir/Documents/geckodriver',
+            executable_path='/home/kazi/Documents/geckodriver',
             firefox_profile=fp)
         # driver = webdriver.Chrome(
         # executable_path='/home/kazi/Documents/chromedriver')
